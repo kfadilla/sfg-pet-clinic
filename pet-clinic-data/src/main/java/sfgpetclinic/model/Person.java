@@ -1,10 +1,9 @@
-package guru.springframework.sfgpetclinic.model;
+package sfgpetclinic.model;
 
 public class Person {
 
     private String lastName;
     private String firstName;
-
 
     public String getLastName() {
         return lastName;
