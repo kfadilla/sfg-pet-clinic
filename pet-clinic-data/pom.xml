@@ -12,7 +12,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <start-class>sfgpetclinic.SfgPetClinicApplication</start-class>
+        <start-class>guru.springframework.sfgpetclinic.SfgPetClinicApplication</start-class>
         <spring.boot.repackage.skip>true</spring.boot.repackage.skip>
     </properties>
     <dependencies>
