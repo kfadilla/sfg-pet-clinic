@@ -20,8 +20,8 @@ public class Visit extends BaseEntity {
         return date;
     }
 
-    public void setDate() {
-        this.date = LocalDate.now();
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getDescription() {

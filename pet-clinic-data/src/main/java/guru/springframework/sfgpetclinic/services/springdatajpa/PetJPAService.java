@@ -13,7 +13,7 @@ import java.util.Set;
 @Profile("springJPA")
 public class PetJPAService implements PetService {
 
-    public final PetRepository petRepository;
+    private final PetRepository petRepository;
 
     public PetJPAService(PetRepository petRepository) {
         this.petRepository = petRepository;

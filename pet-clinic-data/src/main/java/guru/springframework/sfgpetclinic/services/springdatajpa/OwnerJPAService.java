@@ -19,21 +19,21 @@ public class OwnerJPAService implements OwnerService {
     private final PetRepository petRepository;
     private final PetTypeRepository petTypeRepository;
 
-
     public OwnerJPAService(OwnerRepository ownerRepository, PetRepository petRepository,
-                           PetTypeRepository petTypeRepository) {
+                             PetTypeRepository petTypeRepository) {
         this.ownerRepository = ownerRepository;
         this.petRepository = petRepository;
         this.petTypeRepository = petTypeRepository;
     }
 
     @Override
-    public Owner findbyLastName(String lastName) {
-        return ownerRepository.findbyLastName(lastName);
+    public Owner findByLastName(String lastName) {
+        return ownerRepository.findByLastName(lastName);
     }
 
+
     @Override
-    public Iterable<Owner> findAll() {
+    public Set<Owner> findAll() {
         Set<Owner> owners = new HashSet<>();
         ownerRepository.findAll().forEach(owners::add);
         return owners;
@@ -41,7 +41,6 @@ public class OwnerJPAService implements OwnerService {
 
     @Override
     public Owner findById(Long aLong) {
-
         return ownerRepository.findById(aLong).orElse(null);
     }
 
@@ -51,12 +50,12 @@ public class OwnerJPAService implements OwnerService {
     }
 
     @Override
-    public void deleteById(Long aLong) {
-        ownerRepository.deleteById(aLong);
+    public void delete(Owner object) {
+        ownerRepository.delete(object);
     }
 
     @Override
-    public void delete(Owner object) {
-        ownerRepository.delete(object);
+    public void deleteById(Long aLong) {
+        ownerRepository.deleteById(aLong);
     }
 }

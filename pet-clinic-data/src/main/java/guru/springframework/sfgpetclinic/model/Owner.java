@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "owners")
+@Table(name = "owner")
 public class Owner extends Person {
 
     @Column(name = "address")
