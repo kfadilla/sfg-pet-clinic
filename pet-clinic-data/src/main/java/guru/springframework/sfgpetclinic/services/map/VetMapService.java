@@ -11,7 +11,7 @@ import java.util.Set;
 
 
 @Service
-@Profile("Map")
+@Profile({"default","Map"})
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
     private final SpecialtyService specialtyService;
 
@@ -26,7 +26,7 @@ public class VetMapService extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet findById(Long aLong) {
-        return super.findByID(aLong);
+        return super.findById(aLong);
     }
 
     @Override

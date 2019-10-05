@@ -9,7 +9,7 @@ import java.util.Set;
 
 
 @Service
-@Profile("Map")
+@Profile({"default","Map"})
 public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
     @Override
 
@@ -19,7 +19,7 @@ public class PetTypeMapService extends AbstractMapService<PetType, Long> impleme
 
     @Override
     public PetType findById(Long aLong) {
-        return super.findByID(aLong);
+        return super.findById(aLong);
     }
 
     @Override

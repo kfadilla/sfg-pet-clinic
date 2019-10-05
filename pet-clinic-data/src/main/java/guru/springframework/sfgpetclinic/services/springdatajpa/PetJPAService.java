@@ -20,7 +20,7 @@ public class PetJPAService implements PetService {
     }
 
     @Override
-    public Iterable<Pet> findAll() {
+    public Set<Pet> findAll() {
         Set<Pet> pets = new HashSet<>();
         petRepository.findAll().forEach(pets::add);
         return pets;
@@ -45,4 +45,6 @@ public class PetJPAService implements PetService {
     public void delete(Pet object) {
         petRepository.delete(object);
     }
+
+
 }

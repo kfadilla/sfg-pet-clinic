@@ -12,15 +12,21 @@ public abstract class AbstractMapService<T extends BaseEntity,ID extends Long>{
         return new HashSet<T>(map.values());
     }
 
-    T findByID(ID id) {
+    T findById(ID id) {
         return map.get(id);
     }
 
-    T save(T object) {
-        if (object != null && object.getId() == null) {
-            object.setId(getNextId());
+    T save(T object){
+
+        if(object != null) {
+            if(object.getId() == null){
+                object.setId(getNextId());
+            }
             map.put(object.getId(), object);
+        } else {
+            throw new RuntimeException("Object cannot be null");
         }
+
         return object;
     }
 

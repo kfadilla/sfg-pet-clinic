@@ -11,13 +11,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Created by jt on 7/21/18.
+ */
 @Service
-@Profile("Map")
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
-    private PetTypeService petTypeService;
-    private PetService petService;
-
+    private final PetTypeService petTypeService;
+    private final PetService petService;
 
     public OwnerMapService(PetTypeService petTypeService, PetService petService) {
         this.petTypeService = petTypeService;
@@ -30,35 +32,47 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     }
 
     @Override
-    public Owner findById(Long aLong) {
-        return super.findByID(aLong);
+    public Owner findById(Long id) {
+        return super.findById(id);
     }
 
     @Override
-    public Owner save(Owner owner) {
-        if (owner != null) {
-            if (owner.getPets() != null) {
-                owner.getPets().forEach(pet -> {
-                    if (pet.getPetType() != null) {
-                    if (pet.getPetType().getId() != null) {
-                        pet.setPetType(petTypeService.save(pet.getPetType()));
+    public Owner save(Owner object) {
+
+        if(object != null){
+            if (object.getPets() != null) {
+                object.getPets().forEach(pet -> {
+                    if (pet.getPetType() != null){
+                        if(pet.getPetType().getId() == null){
+                            pet.setPetType(petTypeService.save(pet.getPetType()));
+                        }
+                    } else {
+                        throw new RuntimeException("Pet Type is required");
                     }
-                } else {
-                        throw new RuntimeException("Pet type is needed");
-                    }
-                    if (pet.getId() == null) {
+
+                    if(pet.getId() == null){
                         Pet savedPet = petService.save(pet);
                         pet.setId(savedPet.getId());
                     }
                 });
             }
-            return super.save(owner);
-        }
-        else {
+
+            return super.save(object);
+
+        } else {
             return null;
         }
     }
 
+    @Override
+    public void delete(Owner object) {
+        super.delete(object);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        super.deleteById(id);
+    }
 
     @Override
     public Owner findByLastName(String lastName) {
@@ -74,14 +88,5 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
 
         //todo - impl
         return null;
-    }
-    @Override
-    public void delete(Owner owner) {
-        super.delete(owner);
-    }
-
-    @Override
-    public void deleteById(Long aLong) {
-        super.deleteById(aLong);
     }
 }

@@ -19,7 +19,7 @@ public class VetJPAService implements VetService {
     }
 
     @Override
-    public Iterable<Vet> findAll() {
+    public Set<Vet> findAll() {
         Set<Vet> vets = new HashSet<>();
         vetRepository.findAll().forEach(vets::add);
         return vets;

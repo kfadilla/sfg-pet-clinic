@@ -14,7 +14,7 @@ import java.util.Set;
 
 
 @Service
-@Profile("springdatajpa")
+@Profile("springJPA")
 public class OwnerJPAService implements OwnerService {
 
     private final OwnerRepository ownerRepository;
@@ -64,4 +64,5 @@ public class OwnerJPAService implements OwnerService {
     public void deleteById(Long aLong) {
         ownerRepository.deleteById(aLong);
     }
+
 }

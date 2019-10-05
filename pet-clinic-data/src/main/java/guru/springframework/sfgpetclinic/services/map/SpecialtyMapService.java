@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-@Profile("Map")
+@Profile({"default","Map"})
 public class SpecialtyMapService extends  AbstractMapService<Specialty, Long> implements SpecialtyService {
     @Override
     public Set<Specialty> findAll() {
@@ -17,7 +17,7 @@ public class SpecialtyMapService extends  AbstractMapService<Specialty, Long> im
 
     @Override
     public Specialty findById(Long aLong) {
-        return super.findByID(aLong);
+        return super.findById(aLong);
     }
 
     @Override
