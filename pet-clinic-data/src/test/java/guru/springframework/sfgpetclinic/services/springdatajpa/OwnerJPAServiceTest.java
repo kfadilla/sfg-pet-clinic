@@ -69,7 +69,6 @@ class OwnerJPAServiceTest {
     @Test
     void findById() {
         when(ownerRepository.findById(anyLong())).thenReturn(Optional.of(returnOwner));
-
         Owner owner = service.findById(1L);
 
         assertNotNull(owner);
