@@ -41,16 +41,6 @@ class OwnerJPAServiceTest {
         returnOwner = Owner.builder().id(1l).lastName(LAST_NAME).build();
     }
 
-    @Test
-    void findByLastName() {
-        when(ownerRepository.findByLastName(any())).thenReturn(returnOwner);
-
-        Owner smith = service.findByLastName(LAST_NAME);
-
-        assertEquals(LAST_NAME, smith.getLastName());
-
-        verify(ownerRepository).findByLastName(any());
-    }
 
     @Test
     void findAll() {

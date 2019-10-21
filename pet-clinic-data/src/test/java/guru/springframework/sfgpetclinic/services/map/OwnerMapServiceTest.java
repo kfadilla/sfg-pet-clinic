@@ -47,10 +47,6 @@ class   OwnerMapServiceTest {
         assertNotNull(savedOwner);
         assertNotNull(savedOwner.getId());
     }
-    @Test
-    void findByLastName() {
-        assertNotNull(ownerMapService.findByLastName("Mike"));
-    }
 
     @Test
     void delete() {
